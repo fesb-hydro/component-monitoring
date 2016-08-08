@@ -1,0 +1,205 @@
+﻿<Controls:MetroWindow  x:Class="Fesb.Hydrocontest.Presentation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="FESB Hydrocontest | Real-time monitoring" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+        <Grid Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="31*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="33*"/>
+                    <ColumnDefinition Width="31*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="33*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Row="0" ColumnSpan="6">
+                    <Image Source="Resources/logo.jpg"/>
+                </Grid>
+                <Grid Row="1" Column="0" HorizontalAlignment="Right">
+                    <TextBox Name="RefreshRateInSeconds" Width="80" Controls:TextBoxHelper.Watermark="0.5"/>
+                </Grid>
+                <Grid Row="1" Column="2" HorizontalAlignment="Left">
+                    <Controls:SplitButton Name="PortChoiceDropdown" Width="80" ItemsSource="{Binding AvailableSerialPorts}" SelectionChanged="PortSelectionChanged"/>
+                </Grid>
+                <Grid Row="1" Column="3" HorizontalAlignment="Right">
+                    <Button Name="StartLoggingButton" Style="{DynamicResource SquareButtonStyle}" Width="40" Click="StartLogging">
+                        <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_control_play}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                </Grid>
+                <Grid Row="1" Column="5" HorizontalAlignment="Left">
+                    <Button Name="StopLoggingButton" Style="{DynamicResource SquareButtonStyle}" Width="40" Click="StopLogging">
+                        <Rectangle Width="10" Height="10" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_control_stop}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                </Grid>
+                
+            </Grid>
+            
+        </Grid>
+        <Grid Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="75*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Row="0" Column ="0" ColumnSpan="10">
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Stretch" Width="Auto" Stretch="UniformToFill"/>
+                    <Viewbox HorizontalAlignment="Left">
+                        <TextBlock Text="Radio" Margin="3,0,0,0"/>
+                    </Viewbox>
+                </Grid>
+                <Grid Row="1" Column ="0" ColumnSpan="2">
+                    <Controls:Tile Title="Mode" Width="Auto" Height="Auto" Count="{Binding Radio.Mode}"/>
+                </Grid>
+                <Grid Row="1" Column ="2" ColumnSpan="2">
+                    <Controls:Tile Title="Throttle" Width="Auto" Height="Auto" Count="{Binding Radio.Throttle, StringFormat=\{0:0.00\}%}"/>
+                </Grid>
+                <Grid Row="1" Column ="4" ColumnSpan="2">
+                    <Controls:Tile Title="Steer" Width="Auto" Height="Auto" Count="{Binding Radio.Steer, StringFormat=\{0\}°}"/>
+                </Grid>
+                <Grid Row="1" Column ="6" ColumnSpan="2">
+                    <Controls:Tile Title="Potentiometer left" Width="Auto" Height="Auto" Count="{Binding Radio.Potentiometer.Left, StringFormat=\{0:0.00\}%}"/>
+                </Grid>
+                <Grid Row="1" Column ="8" ColumnSpan="2">
+                    <Controls:Tile Title="Potentiometer right" Width="Auto" Height="Auto" Count="{Binding Radio.Potentiometer.Right, StringFormat=\{0:0.00\}%}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="75*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Row="0" Column ="0" ColumnSpan="18">
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Stretch" Width="Auto" Stretch="UniformToFill"/>
+                    <Viewbox HorizontalAlignment="Left">
+                        <TextBlock Text="Motor" Margin="3,0,0,0"/>
+                    </Viewbox>
+                </Grid>
+                <Grid Row="1" Column ="0" ColumnSpan="2">
+                    <Controls:Tile Title="Controller temperature" Width="Auto" Height="Auto" Count="{Binding Motor.ControllerTemperature.Value, StringFormat=\{0\}°C}"/>
+                </Grid>
+                <Grid Row="1" Column ="2" ColumnSpan="2">
+                    <Controls:Tile Title="Battery temperature" Width="Auto" Height="Auto" Count="{Binding Motor.Battery.Temperature.Value, StringFormat=\{0\}°C}"/>
+                </Grid>
+                <Grid Row="1" Column ="4" ColumnSpan="2">
+                    <Controls:Tile Title="Battery voltage" Width="Auto" Height="Auto" Count="{Binding Motor.Battery.Voltage, StringFormat=\{0:0.00\}V}"/>
+                </Grid>
+                <Grid Row="1" Column ="6" ColumnSpan="2">
+                    <Controls:Tile Title="Battery capacity" Width="Auto" Height="Auto" Count="{Binding Motor.Battery.Capacity, StringFormat=\{0\}%}"/>
+                </Grid>
+                <Grid Row="1" Column ="8" ColumnSpan="2">
+                    <Controls:Tile Title="RPM" Width="Auto" Height="Auto" Count="{Binding Motor.RotationsPerMinute}"/>
+                </Grid>
+                <Grid Row="1" Column ="10" ColumnSpan="4">
+                    <Controls:Tile Title="Warning" Width="Auto" Height="Auto" Count="{Binding Motor.Warning}"/>
+                </Grid>
+                <Grid Row="1" Column ="14" ColumnSpan="4">
+                    <Controls:Tile Title="Failure" Width="Auto" Height="Auto" Count="{Binding Motor.Failure}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Row="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="75*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Row="0" Column ="0" ColumnSpan="12">
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Stretch" Width="Auto" Stretch="UniformToFill"/>
+                    <Viewbox HorizontalAlignment="Left">
+                        <TextBlock Text="Boat" Margin="3,0,0,0"/>
+                    </Viewbox>
+                </Grid>
+                <Grid Row="1" Column ="0" ColumnSpan="2">
+                    <Controls:Tile Title="Height low point" Width="Auto" Height="Auto" Count="{Binding Boat.Height.LowerPoint, StringFormat=\{0:0.00\}mm}"/>
+                </Grid>
+                <Grid Row="1" Column ="2" ColumnSpan="2">
+                    <Controls:Tile Title="Height high point" Width="Auto" Height="Auto" Count="{Binding Boat.Height.HigherPoint, StringFormat=\{0:0.00\}mm}"/>
+                </Grid>
+                <Grid Row="1" Column ="4" ColumnSpan="2">
+                    <Controls:Tile Title="Pitch" Width="Auto" Height="Auto" Count="{Binding Boat.Pitch, StringFormat=\{0:0.00\}°}"/>
+                </Grid>
+                <Grid Row="1" Column ="6" ColumnSpan="2">
+                    <Controls:Tile Title="Roll" Width="Auto" Height="Auto" Count="{Binding Boat.Roll, StringFormat=\{0\}°}"/>
+                </Grid>
+                <Grid Row="1" Column ="8" ColumnSpan="2">
+                    <Controls:Tile Title="Speed" Width="Auto" Height="Auto" Count="{Binding Boat.Speed, StringFormat=\{0:0.00\}m/s}"/>
+                </Grid>
+                <Grid Row="1" Column ="10" ColumnSpan="2">
+                    <Controls:Tile Title="Foil angle" Width="Auto" Height="Auto" Count="{Binding Boat.FoilAngle, StringFormat=\{0\}°}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>
