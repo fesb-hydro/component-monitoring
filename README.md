@@ -1,6 +1,6 @@
 # component-monitoring
 
-Pseudo real-time monitoring desktop app that displays human-friendly formatted data about the boat and its components and logs them in a CSV form.    
+Pseudo real-time monitoring desktop app that displays human-friendly data about the FESB Hydrocontest 2016 boat and its components and logs them in a CSV form.    
     
 ![UI](http://i.imgur.com/eLyxvOH.png "UI")
 
